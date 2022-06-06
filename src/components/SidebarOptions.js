@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useCollection } from 'react-firebase-hooks/firestore'
 import { db } from '../firebase';
 
-function SidebarOptions({ Icon, title, addChannelOption}) {
+function SidebarOptions({ Icon, title, addChannelOption, id}) {
+
+    const [channels, loading, error] = useCollection(db.collection('rooms'));
+
 
     const addChannel = () => {
         const channelName = prompt('enter channel name');
@@ -15,7 +19,7 @@ function SidebarOptions({ Icon, title, addChannelOption}) {
     }
 
     const selectChannel = () => {
-
+        
     }
 
   return  (
@@ -56,4 +60,8 @@ const SidebarOptionsContainer = styled.div`
         padding: 15px;
     }
 `;
-const SidebarOptionsChannel = styled.div``;
+const SidebarOptionsChannel = styled.h3`
+    padding: 10px 0;
+    font-weight: 300;
+
+`;
