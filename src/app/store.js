@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {createStore} from '@reduxjs/toolkit'
+import { legacy_createStore as createStore} from 'redux'
 import appReducer from '../features/appSlice'
 
 export const store = createStore(appReducer)
