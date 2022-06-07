@@ -22,9 +22,9 @@ function SidebarOptions({ Icon, title, addChannelOption, id}) {
 
     const selectChannel = () => {
         if (id) {
-            dispatch(enterRoom({
-                roomId: id
-            }))
+          dispatch(enterRoom({
+            roomId: id
+          }))
         }
     }
 
