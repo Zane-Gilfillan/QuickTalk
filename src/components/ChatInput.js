@@ -19,7 +19,7 @@ function ChatInput({channelName, channelId}) {
             message: input,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             user: 'zane found',
-            userImage: ''
+            userImage: 'https://w7.pngwing.com/pngs/465/803/png-transparent-princess-peach-super-mario-bros-princess-peach-princess-daisy-peach-super-mario-bros-video-game-cartoon-thumbnail.png'
         });
 
         setInput('');
