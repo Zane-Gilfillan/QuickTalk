@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 export const appSlice = createSlice({
   name: 'app',
@@ -6,13 +6,14 @@ export const appSlice = createSlice({
     roomId: null,
   },
   reducers: {
-    increment: state => {
-      state.value += 1
+    enterRoom: (state, action) => {
+      state.roomId = action.payload.roomId;
     },
-  }
-})
+  },
+});
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = appSlice.actions
+export const { enterRoom } = appSlice.actions;
 
-export default appSlice.reducer
+export const selectRoomId = state => state.app.roomId;
+
+export default appSlice.reducer;
