@@ -26,55 +26,67 @@ function Chat() {
     useEffect(() => {
         chatRef?.current?.scrollIntoView({ behavior: 'smooth'});
     }, [roomId, loading])
+    
 
   return (
     
     <ChatContainer>
-        <>
-            <Header>
-                <HeaderLeft>
-                    <h4>
-                        <strong>#{roomDetails?.data().name}</strong>
-                    </h4>
-                        <StarBoarderOutlinedIcon />
-                    </HeaderLeft>
+        
+        { // build a welcome "screen" before you choose a channel
+        /* <ChatIntro>
+            <h1>welcome! click on a channel to get started!</h1>
+        </ChatIntro> */
+        }
+        {roomDetails && roomMessages && (
+            <>
+                <Header>
+                    <HeaderLeft>
+                        <h4>
+                            <strong>#{roomDetails?.data().name}</strong>
+                        </h4>
+                            <StarBoarderOutlinedIcon />
+                        </HeaderLeft>
 
-                <HeaderRight>
-                    <p>
-                        <InfoOutlinedIcon /> details
-                    </p>
-                </HeaderRight>
-            </Header>
+                    <HeaderRight>
+                        <p>
+                            <InfoOutlinedIcon /> details
+                        </p>
+                    </HeaderRight>
+                </Header>
 
-            <ChatMessages>
-                {roomMessages?.docs.map((doc) => {
-                    const { message, timestamp, user, userImage} = doc.data();
+                <ChatMessages>
+                    {roomMessages?.docs.map((doc) => {
+                        const { message, timestamp, user, userImage} = doc.data();
 
-                    return (
-                        <Message
-                            key={doc.id}
-                            message={message}
-                            timestamp={timestamp}
-                            user={user}
-                            userImage={userImage}
-                        />
-                    )
+                        return (
+                            <Message
+                                key={doc.id}
+                                message={message}
+                                timestamp={timestamp}
+                                user={user}
+                                userImage={userImage}
+                            />
+                        )
 
-                })}
-                <ChatBottom ref={chatRef} />
-            </ChatMessages>
+                    })}
+                    <ChatBottom ref={chatRef} />
+                </ChatMessages>
 
-            <ChatInput
-                chatRef={chatRef}
-                channelName={roomDetails?.data().name}
-                channelId={roomId}
-            />
+                <ChatInput
+                    chatRef={chatRef}
+                    channelName={roomDetails?.data().name}
+                    channelId={roomId}
+                />
         </>
+        )}
+        
         </ChatContainer>
   );
 }
 
 export default Chat
+
+const ChatIntro = styled.div``;
 
 const Header = styled.div`
     display: flex;
