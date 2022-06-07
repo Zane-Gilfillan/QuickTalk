@@ -1,6 +1,4 @@
 import React from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore'
-import { db } from '../firebase';
 import styled from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
@@ -15,10 +13,15 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import AddIcon from '@material-ui/icons/Add'
+import { useCollection } from 'react-firebase-hooks/firestore'
+import { db } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase'
 
 function Sidebar() {
 
     const [channels, loading, error] = useCollection(db.collection('rooms'));
+    const [user] = useAuthState(auth)
 
   return (
     <SidebarContainer>
