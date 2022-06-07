@@ -30,7 +30,7 @@ function Sidebar() {
                 <h2>quicktalk</h2>
                 <h3>
                     <FiberManualRecordIcon />
-                    Zane Found
+                    {user?.displayName}
                 </h3>
             </SidebarInfo>
             <CreateIcon />
