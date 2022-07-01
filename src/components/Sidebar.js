@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 import SidebarOptions from './SidebarOptions';
+import { useCollection } from 'react-firebase-hooks/firestore'
+import { db } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase'
+
+//icons 
 import InsertCommentIcon from '@material-ui/icons/InsertComment'
 import InboxIcon from '@material-ui/icons/Inbox'
 import DraftsIcon from '@material-ui/icons/Drafts'
@@ -13,10 +19,6 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import AddIcon from '@material-ui/icons/Add'
-import { useCollection } from 'react-firebase-hooks/firestore'
-import { db } from '../firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase'
 
 function Sidebar() {
 
